@@ -30,3 +30,29 @@ button {
   margin-top: 1rem;
   border-radius: 8px;
 }
+
+.ticket-card {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 16px;
+  margin-top: 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  width: 400px;
+}
+
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.close-btn {
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
