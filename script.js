@@ -2,24 +2,32 @@ document.getElementById("addTicket").addEventListener("click", function () {
   const input = document.getElementById("ticketInput");
   const ticketText = input.value.trim();
 
-  if (ticketText === "") return;
+  if (ticketText !== "") {
+    const ticketCard = document.createElement("div");
+    ticketCard.className = "ticket-card";
 
-  const ticketCard = document.createElement("div");
-  ticketCard.className = "ticket-card";
+    ticketCard.innerHTML = `
+      <p>${ticketText}</p>
+      <div class="ticket-actions">
+        <button class="edit-button">✏️ Edit</button>
+        <button class="resolve-button">✅ Resolve</button>
+      </div>
+    `;
 
-  const ticketContent = document.createElement("p");
-  ticketContent.textContent = ticketText;
+    document.getElementById("ticketContainer").appendChild(ticketCard);
+    input.value = "";
 
-  const removeButton = document.createElement("button");
-  removeButton.className = "remove-button";
-  removeButton.textContent = "Remove";
-  removeButton.onclick = function () {
-    ticketCard.remove();
-  };
+    // Optional: Add edit functionality
+    ticketCard.querySelector(".edit-button").addEventListener("click", () => {
+      const newText = prompt("Edit ticket:", ticketText);
+      if (newText !== null && newText.trim() !== "") {
+        ticketCard.querySelector("p").textContent = newText.trim();
+      }
+    });
 
-  ticketCard.appendChild(ticketContent);
-  ticketCard.appendChild(removeButton);
-
-  document.getElementById("ticketContainer").appendChild(ticketCard);
-  input.value = "";
+    // Optional: Remove on resolve
+    ticketCard.querySelector(".resolve-button").addEventListener("click", () => {
+      ticketCard.remove();
+    });
+  }
 });
