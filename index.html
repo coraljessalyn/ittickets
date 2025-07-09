@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Open IT Helpdesk Tickets</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>🛠️ Open IT Helpdesk Tickets</h1>
-    <input type="text" id="ticketInput" placeholder="Describe the issue..." />
-    <button id="addTicket">Add Ticket</button>
-
-    <!-- This is the missing container -->
-    <div id="ticketContainer"></div>
+    <div class="input-section">
+      <input type="text" id="ticketInput" placeholder="Describe the issue..." />
+      <button onclick="addTicket()">Add Ticket</button>
+    </div>
+    <div id="ticketList"></div>
   </div>
-
+  
   <script src="script.js"></script>
 </body>
 </html>
