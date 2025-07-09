@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Open IT Helpdesk Tickets</title>
   <style>
     body {
@@ -28,14 +28,10 @@
       align-items: center;
     }
 
-    .section h2::before {
-      margin-right: 10px;
-    }
-
-    .high h2::before { content: "🔥"; }
-    .medium h2::before { content: "⚠️"; }
-    .needs-update h2::before { content: "🕓"; }
-    .complete h2::before { content: "✅"; }
+    .section.high h2::before { content: "🔥 "; }
+    .section.medium h2::before { content: "⚠️ "; }
+    .section.needs-update h2::before { content: "🕓 "; }
+    .section.complete h2::before { content: "✅ "; }
 
     .tickets {
       display: flex;
@@ -49,6 +45,8 @@
       padding: 15px;
       width: 300px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
     }
 
     .ticket h3 {
@@ -71,15 +69,21 @@
       color: white;
       border: 1px solid #444;
       border-radius: 5px;
+      flex-grow: 1;
     }
 
-    .ticket button {
-      padding: 5px 10px;
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      padding: 6px 12px;
       border: none;
       border-radius: 4px;
-      margin-right: 10px;
       font-size: 0.8em;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .complete-btn {
@@ -109,50 +113,169 @@
   <!-- High Priority -->
   <div class="section high">
     <h2>High Priority</h2>
-    <div class="tickets">
-      <div class="ticket"><h3>Status Needed – Honda and Acura Programs</h3><p>Ticket: 50062</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Column Needed – Hyundai Report</h3><p>Ticket: 50042</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Report Modification Needed/Connect to Power BI</h3><p>Ticket: 49737</p><p>Priority: High</p><p>Status: Open</p><p><em>(May be merged with Ticket 50042)</em></p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Access to Visual Data for PB Reporting</h3><p>Ticket: 49841</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Email Advisory Automation Dynamics</h3><p>Ticket: 49736</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>New Program Add for Dynamics</h3><p>Ticket: 49532</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>White Label Email for BrandPoint</h3><p>Ticket: 48295</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Tracking Digital Tech Support Visits in Dynamics Hyundai</h3><p>Ticket: 48361</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+    <div class="tickets" id="highPriorityTickets">
+      <!-- Tickets added by JS -->
     </div>
   </div>
 
   <!-- Medium Priority -->
   <div class="section medium">
     <h2>Medium Priority</h2>
-    <div class="tickets">
-      <div class="ticket"><h3>Orders Entity</h3><p>Ticket: 49980</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Order Revision Tracking Dynamics</h3><p>Ticket: 44177</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Jitbit API Access and Power Automate Custom Connector</h3><p>Ticket: 48385</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Hyundai Digital API Support</h3><p>Ticket: 48056</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
-      <div class="ticket"><h3>Microsoft Forms File Upload</h3><p>Ticket: 47018</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+    <div class="tickets" id="mediumPriorityTickets">
+      <!-- Tickets added by JS -->
     </div>
   </div>
 
   <!-- Needs Update -->
   <div class="section needs-update">
     <h2>Needs Update from Bill</h2>
-    <div class="tickets">
-      <div class="ticket"><h3>Managing Maintenance Visits Hyundai Dynamics</h3><p>Ticket: 47897</p><p>Status: Need Update</p></div>
-      <div class="ticket"><h3>Importing Part IDs in Dynamics Samsung vs ELO</h3><p>Ticket: 48102</p><p>Status: Need Update</p></div>
+    <div class="tickets" id="needsUpdateTickets">
+      <!-- Tickets added by JS -->
     </div>
   </div>
 
   <!-- Complete -->
   <div class="section complete">
     <h2>Complete</h2>
-    <div class="tickets">
-      <div class="ticket"><h3>CRM UAT Missing Retain Info from Account</h3><p>Ticket: 49720</p><p>Status: Complete</p></div>
-      <div class="ticket"><h3>UAT Testing Dynamics</h3><p>Ticket: 49818</p><p>Status: Complete</p></div>
-      <div class="ticket"><h3>Enable Set Regarding for Retail Programs Entity</h3><p>Ticket: 48437</p><p>Status: Complete</p></div>
-      <div class="ticket"><h3>Blue Stage Program</h3><p>Ticket: 48438</p><p>Status: Complete</p></div>
-      <div class="ticket"><h3>Visual Data Matching</h3><p>Ticket: 47993</p><p>Status: Complete</p></div>
+    <div class="tickets" id="completeTickets">
+      <!-- Tickets added by JS -->
     </div>
   </div>
+
+<script>
+  // Your ticket data
+  const tickets = [
+    { title: "Status Needed – Honda and Acura Programs", id: "50062", priority: "High", status: "Open" },
+    { title: "Column Needed – Hyundai Report", id: "50042", priority: "High", status: "Open" },
+    { title: "Report Modification Needed/Connect to Power BI", id: "49737", priority: "High", status: "Open", note: "(May be merged with Ticket 50042)" },
+    { title: "Access to Visual Data for PB Reporting", id: "49841", priority: "High", status: "Open" },
+    { title: "Email Advisory Automation Dynamics", id: "49736", priority: "High", status: "Open" },
+    { title: "New Program Add for Dynamics", id: "49532", priority: "High", status: "Open" },
+    { title: "White Label Email for BrandPoint", id: "48295", priority: "High", status: "Open" },
+    { title: "Tracking Digital Tech Support Visits in Dynamics Hyundai", id: "48361", priority: "High", status: "Open" },
+
+    { title: "Orders Entity", id: "49980", priority: "Medium", status: "Open" },
+    { title: "Order Revision Tracking Dynamics", id: "44177", priority: "Medium", status: "Open" },
+    { title: "Jitbit API Access and Power Automate Custom Connector", id: "48385", priority: "Medium", status: "Open" },
+    { title: "Hyundai Digital API Support", id: "48056", priority: "Medium", status: "Open" },
+    { title: "Microsoft Forms File Upload", id: "47018", priority: "Medium", status: "Open" },
+
+    { title: "Managing Maintenance Visits Hyundai Dynamics", id: "47897", priority: "Needs Update", status: "Need Update" },
+    { title: "Importing Part IDs in Dynamics Samsung vs ELO", id: "48102", priority: "Needs Update", status: "Need Update" },
+
+    { title: "CRM UAT Missing Retain Info from Account", id: "49720", priority: "Complete", status: "Complete" },
+    { title: "UAT Testing Dynamics", id: "49818", priority: "Complete", status: "Complete" },
+    { title: "Enable Set Regarding for Retail Programs Entity", id: "48437", priority: "Complete", status: "Complete" },
+    { title: "Blue Stage Program", id: "48438", priority: "Complete", status: "Complete" },
+    { title: "Visual Data Matching", id: "47993", priority: "Complete", status: "Complete" }
+  ];
+
+  // Map priority to container ID
+  const containers = {
+    High: 'highPriorityTickets',
+    Medium: 'mediumPriorityTickets',
+    'Needs Update': 'needsUpdateTickets',
+    Complete: 'completeTickets',
+  };
+
+  // Create ticket card HTML
+  function createTicketCard(ticket) {
+    const card = document.createElement('div');
+    card.className = 'ticket';
+
+    const noteText = ticket.note ? `<p><em>${ticket.note}</em></p>` : '';
+
+    card.innerHTML = `
+      <h3>${ticket.title}</h3>
+      <p>Ticket: ${ticket.id}</p>
+      <p>Priority: ${ticket.priority}</p>
+      <p>Status: ${ticket.status}</p>
+      ${noteText}
+      ${ticket.status === 'Open' || ticket.status === 'Need Update' ? `<p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea>` : ''}
+      <div class="buttons">
+        ${ticket.status === 'Open' || ticket.status === 'Need Update' ? `<button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button>` : ''}
+      </div>
+    `;
+
+    // Button event listeners
+    if (ticket.status === 'Open' || ticket.status === 'Need Update') {
+      card.querySelector('.complete-btn').onclick = () => markComplete(card, ticket);
+      card.querySelector('.priority-btn').onclick = () => changePriority(card, ticket);
+    }
+
+    return card;
+  }
+
+  // Move ticket card to Complete section
+  function markComplete(card, ticket) {
+    ticket.status = 'Complete';
+    ticket.priority = 'Complete';
+    updateCard(card, ticket);
+    document.getElementById(containers.Complete).appendChild(card);
+  }
+
+  // Change priority cycle High -> Medium -> Low -> High
+  function changePriority(card, ticket) {
+    if(ticket.priority === 'High') ticket.priority = 'Medium';
+    else if(ticket.priority === 'Medium') ticket.priority = 'Low';
+    else ticket.priority = 'High';
+
+    updateCard(card, ticket);
+
+    // Move card to new container if priority changed
+    if(ticket.priority === 'High' || ticket.priority === 'Medium') {
+      document.getElementById(containers[ticket.priority]).appendChild(card);
+    } else {
+      // If low priority or others - just keep it in medium section for now
+      document.getElementById(containers.Medium).appendChild(card);
+    }
+  }
+
+  // Update card content with current ticket info
+  function updateCard(card, ticket) {
+    card.querySelector('p:nth-of-type(2)').textContent = `Ticket: ${ticket.id}`;
+    card.querySelector('p:nth-of-type(3)').textContent = `Priority: ${ticket.priority}`;
+    card.querySelector('p:nth-of-type(4)').textContent = `Status: ${ticket.status}`;
+
+    // Show or hide textarea/buttons based on status
+    if(ticket.status === 'Complete') {
+      card.querySelector('textarea')?.remove();
+      const buttons = card.querySelector('.buttons');
+      if(buttons) buttons.innerHTML = '';
+    } else {
+      if(!card.querySelector('textarea')) {
+        const p = document.createElement('p');
+        p.innerHTML = '<em>Add any relevant notes below.</em>';
+        const textarea = document.createElement('textarea');
+        textarea.placeholder = 'Add notes here...';
+        card.insertBefore(p, card.querySelector('.buttons'));
+        card.insertBefore(textarea, card.querySelector('.buttons'));
+      }
+      const buttons = card.querySelector('.buttons');
+      if(buttons) {
+        buttons.innerHTML = `
+          <button class="complete-btn">Mark as Complete</button>
+          <button class="priority-btn">Change Priority</button>
+        `;
+        buttons.querySelector('.complete-btn').onclick = () => markComplete(card, ticket);
+        buttons.querySelector('.priority-btn').onclick = () => changePriority(card, ticket);
+      }
+    }
+  }
+
+  // Render tickets on page load
+  function renderTickets() {
+    for(const ticket of tickets) {
+      const containerId = containers[ticket.priority];
+      const container = document.getElementById(containerId);
+      if(container) {
+        container.appendChild(createTicketCard(ticket));
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderTickets);
+</script>
 
 </body>
 </html>
