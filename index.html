@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Open IT Helpdesk Tickets</title>
+  <title>IT Helpdesk Tickets</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-   <h1>🧪 Testing IT Helpdesk Page</h1>
+  <h1>🛠️ Open IT Helpdesk Tickets</h1>
 
-    <div class="input-section">
-      <input type="text" id="ticketInput" placeholder="Describe the issue..." />
-      <button onclick="addTicket()">Add Ticket</button>
-    </div>
-    <div id="ticketList"></div>
-  </div>
-  
+  <h2>🔥 High Priority</h2>
+  <div class="ticket-grid" id="high-priority"></div>
+
+  <h2>⚠️ Medium Priority</h2>
+  <div class="ticket-grid" id="medium-priority"></div>
+
+  <h2>🟢 Low Priority</h2>
+  <div class="ticket-grid" id="low-priority"></div>
+
+  <h2>🕓 Needs Update</h2>
+  <div class="ticket-grid" id="needs-update"></div>
+
+  <h2>✅ Complete</h2>
+  <div class="ticket-grid" id="complete-section"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
