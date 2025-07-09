@@ -53,3 +53,118 @@
       background: #222;
       color: #ccc;
       border: 1px solid #444;
+      border-radius: 4px;
+      padding: 6px;
+      resize: vertical;
+      min-height: 50px;
+      margin-top: 5px;
+    }
+    .ticket button {
+      margin-top: 8px;
+      padding: 6px 10px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .complete-btn {
+      background-color: #4CAF50;
+      color: #fff;
+      margin-right: 5px;
+    }
+    .priority-btn {
+      background-color: #2196F3;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛠️ Open IT Helpdesk Tickets</h1>
+
+  <h2>🔥 High Priority</h2>
+  <div class="ticket-grid">
+    <div class="ticket">
+      <h3>Status Needed – Honda and Acura Programs</h3>
+      <p><strong>Ticket:</strong> 50062</p>
+      <p><strong>Priority:</strong> High</p>
+      <p><strong>Status:</strong> Open</p>
+      <p><em>Add any relevant notes below.</em></p>
+      <textarea placeholder="Add notes here..."></textarea>
+      <br/>
+      <button class="complete-btn">Mark as Complete</button>
+      <button class="priority-btn">Change Priority</button>
+    </div>
+    <!-- Add more high-priority tickets here -->
+  </div>
+
+  <h2>⚠️ Medium Priority</h2>
+  <div class="ticket-grid">
+    <div class="ticket">
+      <h3>Orders Entity</h3>
+      <p><strong>Ticket:</strong> 49980</p>
+      <p><strong>Priority:</strong> Medium</p>
+      <p><strong>Status:</strong> Open</p>
+      <p><em>Add any relevant notes below.</em></p>
+      <textarea placeholder="Add notes here..."></textarea>
+      <br/>
+      <button class="complete-btn">Mark as Complete</button>
+      <button class="priority-btn">Change Priority</button>
+    </div>
+  </div>
+
+  <h2>🟢 Low Priority</h2>
+  <div class="ticket-grid">
+    <div class="ticket">
+      <h3>Misc Field Label Tweaks</h3>
+      <p><strong>Ticket:</strong> 40012</p>
+      <p><strong>Priority:</strong> Low</p>
+      <p><strong>Status:</strong> Open</p>
+      <p><em>Add any relevant notes below.</em></p>
+      <textarea placeholder="Add notes here..."></textarea>
+      <br/>
+      <button class="complete-btn">Mark as Complete</button>
+      <button class="priority-btn">Change Priority</button>
+    </div>
+  </div>
+
+  <h2>🕒 Needs Update</h2>
+  <div class="ticket-grid">
+    <div class="ticket">
+      <h3>Follow Up with BrandPoint</h3>
+      <p><strong>Ticket:</strong> 48888</p>
+      <p><strong>Priority:</strong> Medium</p>
+      <p><strong>Status:</strong> Awaiting Update</p>
+      <p><em>Add any relevant notes below.</em></p>
+      <textarea placeholder="Add notes here..."></textarea>
+      <br/>
+      <button class="complete-btn">Mark as Complete</button>
+      <button class="priority-btn">Change Priority</button>
+    </div>
+  </div>
+
+  <h2>✅ Complete</h2>
+  <div class="ticket-grid">
+    <div class="ticket">
+      <h3>Resolved API Access Request</h3>
+      <p><strong>Ticket:</strong> 47000</p>
+      <p><strong>Priority:</strong> Medium</p>
+      <p><strong>Status:</strong> Complete</p>
+      <p><em>Archived for reference.</em></p>
+      <textarea disabled>This ticket was completed successfully.</textarea>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".complete-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        alert("Marked as complete (this would move the ticket in a real app).");
+      });
+    });
+    document.querySelectorAll(".priority-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        alert("Priority change logic not implemented in static version.");
+      });
+    });
+  </script>
+</body>
+</html>
