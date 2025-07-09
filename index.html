@@ -1,226 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Open IT Helpdesk Tickets</title>
   <style>
     body {
       background-color: #111;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 20px;
     }
+
     h1 {
-      font-size: 2.5em;
+      font-size: 2em;
       margin-bottom: 10px;
     }
-    h2 {
-      margin-top: 40px;
-      color: #fff;
+
+    .section {
+      margin-bottom: 40px;
     }
-    .ticket-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    .section h2 {
+      font-size: 1.5em;
+      margin: 20px 0 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .section h2::before {
+      margin-right: 10px;
+    }
+
+    .high h2::before { content: "🔥"; }
+    .medium h2::before { content: "⚠️"; }
+    .needs-update h2::before { content: "🕓"; }
+    .complete h2::before { content: "✅"; }
+
+    .tickets {
+      display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      margin-top: 20px;
     }
-    .ticket-card {
-      background-color: #1e1e1e;
+
+    .ticket {
+      background-color: #222;
       border-radius: 10px;
       padding: 15px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      width: 300px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
-    .ticket-title {
-      font-weight: bold;
-      color: #61dafb;
-      margin-bottom: 5px;
-    }
-    .ticket-detail {
-      font-size: 0.9em;
-      margin-bottom: 5px;
-    }
-    .priority-high { color: orange; }
-    .priority-medium { color: gold; }
-    .status-open { color: orangered; }
-    textarea {
-      width: 100%;
-      background-color: #333;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 5px;
-      resize: vertical;
+
+    .ticket h3 {
+      font-size: 1em;
+      color: #4db8ff;
       margin-bottom: 10px;
     }
-    .btn {
-      padding: 6px 10px;
+
+    .ticket p {
+      margin: 2px 0;
+      font-size: 0.9em;
+    }
+
+    .ticket textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 5px;
+      resize: vertical;
+      background-color: #111;
+      color: white;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+
+    .ticket button {
+      padding: 5px 10px;
       border: none;
       border-radius: 4px;
+      margin-right: 10px;
+      font-size: 0.8em;
       cursor: pointer;
-      margin-right: 5px;
-      font-size: 0.85em;
     }
-    .btn-complete {
+
+    .complete-btn {
       background-color: #4CAF50;
       color: white;
     }
-    .btn-priority {
+
+    .priority-btn {
       background-color: #2196F3;
       color: white;
+    }
+
+    .ticket p:nth-child(3) {
+      color: orange;
+    }
+
+    .complete .ticket,
+    .complete .ticket p {
+      opacity: 0.6;
     }
   </style>
 </head>
 <body>
+
   <h1>🛠️ Open IT Helpdesk Tickets</h1>
 
-  <h2>🔥 High Priority</h2>
-  <div class="ticket-grid">
-    <div class="ticket-card">
-      <div class="ticket-title">Status Needed – Honda and Acura Programs</div>
-      <div class="ticket-detail">Ticket: 50062</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Column Needed – Hyundai Report</div>
-      <div class="ticket-detail">Ticket: 50042</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Report Modification Needed/Connect to Power BI</div>
-      <div class="ticket-detail">Ticket: 49737</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <div style="font-style: italic; font-size: 0.8em; color: lightgray;">(May be merged with Ticket 50042)</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Access to Visual Data for PB Reporting</div>
-      <div class="ticket-detail">Ticket: 49841</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Email Advisory Automation Dynamics</div>
-      <div class="ticket-detail">Ticket: 49736</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">New Program Add for Dynamics</div>
-      <div class="ticket-detail">Ticket: 49532</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">White Label Email for BrandPoint</div>
-      <div class="ticket-detail">Ticket: 48295</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Tracking Digital Tech Support Visits in Dynamics Hyundai</div>
-      <div class="ticket-detail">Ticket: 48361</div>
-      <div class="ticket-detail priority-high">Priority: High</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
+  <!-- High Priority -->
+  <div class="section high">
+    <h2>High Priority</h2>
+    <div class="tickets">
+      <div class="ticket"><h3>Status Needed – Honda and Acura Programs</h3><p>Ticket: 50062</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Column Needed – Hyundai Report</h3><p>Ticket: 50042</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Report Modification Needed/Connect to Power BI</h3><p>Ticket: 49737</p><p>Priority: High</p><p>Status: Open</p><p><em>(May be merged with Ticket 50042)</em></p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Access to Visual Data for PB Reporting</h3><p>Ticket: 49841</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Email Advisory Automation Dynamics</h3><p>Ticket: 49736</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>New Program Add for Dynamics</h3><p>Ticket: 49532</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>White Label Email for BrandPoint</h3><p>Ticket: 48295</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Tracking Digital Tech Support Visits in Dynamics Hyundai</h3><p>Ticket: 48361</p><p>Priority: High</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
     </div>
   </div>
 
-  <h2>⚠️ Medium Priority</h2>
-  <div class="ticket-grid">
-    <div class="ticket-card">
-      <div class="ticket-title">Orders Entity</div>
-      <div class="ticket-detail">Ticket: 49980</div>
-      <div class="ticket-detail priority-medium">Priority: Medium</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Order Revision Tracking Dynamics</div>
-      <div class="ticket-detail">Ticket: 44177</div>
-      <div class="ticket-detail priority-medium">Priority: Medium</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Jitbit API Access and Power Automate Custom Connector</div>
-      <div class="ticket-detail">Ticket: 48385</div>
-      <div class="ticket-detail priority-medium">Priority: Medium</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Hyundai Digital API Support</div>
-      <div class="ticket-detail">Ticket: 48056</div>
-      <div class="ticket-detail priority-medium">Priority: Medium</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
-    </div>
-
-    <div class="ticket-card">
-      <div class="ticket-title">Microsoft Forms File Upload</div>
-      <div class="ticket-detail">Ticket: 47018</div>
-      <div class="ticket-detail priority-medium">Priority: Medium</div>
-      <div class="ticket-detail status-open">Status: Open</div>
-      <p>Add any relevant notes below.</p>
-      <textarea placeholder="Add notes here..."></textarea>
-      <button class="btn btn-complete">Mark as Complete</button>
-      <button class="btn btn-priority">Change Priority</button>
+  <!-- Medium Priority -->
+  <div class="section medium">
+    <h2>Medium Priority</h2>
+    <div class="tickets">
+      <div class="ticket"><h3>Orders Entity</h3><p>Ticket: 49980</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Order Revision Tracking Dynamics</h3><p>Ticket: 44177</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Jitbit API Access and Power Automate Custom Connector</h3><p>Ticket: 48385</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Hyundai Digital API Support</h3><p>Ticket: 48056</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
+      <div class="ticket"><h3>Microsoft Forms File Upload</h3><p>Ticket: 47018</p><p>Priority: Medium</p><p>Status: Open</p><p><em>Add any relevant notes below.</em></p><textarea placeholder="Add notes here..."></textarea><button class="complete-btn">Mark as Complete</button><button class="priority-btn">Change Priority</button></div>
     </div>
   </div>
+
+  <!-- Needs Update -->
+  <div class="section needs-update">
+    <h2>Needs Update from Bill</h2>
+    <div class="tickets">
+      <div class="ticket"><h3>Managing Maintenance Visits Hyundai Dynamics</h3><p>Ticket: 47897</p><p>Status: Need Update</p></div>
+      <div class="ticket"><h3>Importing Part IDs in Dynamics Samsung vs ELO</h3><p>Ticket: 48102</p><p>Status: Need Update</p></div>
+    </div>
+  </div>
+
+  <!-- Complete -->
+  <div class="section complete">
+    <h2>Complete</h2>
+    <div class="tickets">
+      <div class="ticket"><h3>CRM UAT Missing Retain Info from Account</h3><p>Ticket: 49720</p><p>Status: Complete</p></div>
+      <div class="ticket"><h3>UAT Testing Dynamics</h3><p>Ticket: 49818</p><p>Status: Complete</p></div>
+      <div class="ticket"><h3>Enable Set Regarding for Retail Programs Entity</h3><p>Ticket: 48437</p><p>Status: Complete</p></div>
+      <div class="ticket"><h3>Blue Stage Program</h3><p>Ticket: 48438</p><p>Status: Complete</p></div>
+      <div class="ticket"><h3>Visual Data Matching</h3><p>Ticket: 47993</p><p>Status: Complete</p></div>
+    </div>
+  </div>
+
 </body>
 </html>
