@@ -4,14 +4,22 @@ document.getElementById("addTicket").addEventListener("click", function () {
 
   if (ticketText === "") return;
 
-  const card = document.createElement("div");
-  card.className = "ticket-card";
-  card.innerHTML = `
-    <span>${ticketText}</span>
-    <button onclick="this.parentElement.remove()">Remove</button>
-  `;
+  const ticketCard = document.createElement("div");
+  ticketCard.className = "ticket-card";
 
-  document.getElementById("ticketContainer").appendChild(card);
+  const ticketContent = document.createElement("p");
+  ticketContent.textContent = ticketText;
+
+  const removeButton = document.createElement("button");
+  removeButton.className = "remove-button";
+  removeButton.textContent = "Remove";
+  removeButton.onclick = function () {
+    ticketCard.remove();
+  };
+
+  ticketCard.appendChild(ticketContent);
+  ticketCard.appendChild(removeButton);
+
+  document.getElementById("ticketContainer").appendChild(ticketCard);
   input.value = "";
 });
-
