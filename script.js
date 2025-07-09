@@ -1,33 +1,52 @@
-document.getElementById("addTicket").addEventListener("click", function () {
-  const input = document.getElementById("ticketInput");
-  const ticketText = input.value.trim();
+// Grab elements
+const ticketInput = document.getElementById('ticketInput');
+const ticketList = document.getElementById('ticketList');
 
-  if (ticketText !== "") {
-    const ticketCard = document.createElement("div");
-    ticketCard.className = "ticket-card";
+// Function to create a new ticket card
+function addTicket() {
+  const issueText = ticketInput.value.trim();
+  if (issueText === '') return;
 
-    ticketCard.innerHTML = `
-      <p>${ticketText}</p>
-      <div class="ticket-actions">
-        <button class="edit-button">✏️ Edit</button>
-        <button class="resolve-button">✅ Resolve</button>
-      </div>
-    `;
+  // Create ticket card container
+  const ticketCard = document.createElement('div');
+  ticketCard.className = 'ticket-card';
 
-    document.getElementById("ticketContainer").appendChild(ticketCard);
-    input.value = "";
+  // Create paragraph for the ticket description
+  const ticketDescription = document.createElement('p');
+  ticketDescription.textContent = issueText;
+  ticketCard.appendChild(ticketDescription);
 
-    // Optional: Add edit functionality
-    ticketCard.querySelector(".edit-button").addEventListener("click", () => {
-      const newText = prompt("Edit ticket:", ticketText);
-      if (newText !== null && newText.trim() !== "") {
-        ticketCard.querySelector("p").textContent = newText.trim();
-      }
-    });
+  // Action buttons container
+  const actions = document.createElement('div');
+  actions.className = 'ticket-actions';
 
-    // Optional: Remove on resolve
-    ticketCard.querySelector(".resolve-button").addEventListener("click", () => {
-      ticketCard.remove();
-    });
-  }
-});
+  // Edit button
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit';
+  editBtn.className = 'edit-button';
+  editBtn.onclick = () => {
+    const newText = prompt('Update the issue description:', ticketDescription.textContent);
+    if (newText !== null && newText.trim() !== '') {
+      ticketDescription.textContent = newText.trim();
+    }
+  };
+
+  // Resolve button
+  const resolveBtn = document.createElement('button');
+  resolveBtn.textContent = 'Resolve';
+  resolveBtn.className = 'resolve-button';
+  resolveBtn.onclick = () => {
+    ticketCard.remove();
+  };
+
+  // Append buttons
+  actions.appendChild(editBtn);
+  actions.appendChild(resolveBtn);
+  ticketCard.appendChild(actions);
+
+  // Add ticket to the list
+  ticketList.appendChild(ticketCard);
+
+  // Clear input
+  ticketInput.value = '';
+}
