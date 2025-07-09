@@ -14,3 +14,4 @@ document.getElementById("addTicket").addEventListener("click", function () {
   document.getElementById("ticketContainer").appendChild(card);
   input.value = "";
 });
+
